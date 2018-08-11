@@ -97,6 +97,8 @@ int main(void)
 				for(uint8_t i = 0; i < sizeof(string); i++)			//Loop for every character within the defined string.
 				{
 					SendKey(CharToKey(string[i]), CheckShift(string[i]));	//For each character, send the keystrokes to recreate it.
+					SendKey(NO_KEY, NO_MODIFIER);				//Send a no-key after every key to emulate releasing the key.
+												//(This is needed to capture double letters or repeated chars.)
 				}
 			}
 			ready = FALSE;				//Once string typing has looped the defined number of times, flag that it's done.
